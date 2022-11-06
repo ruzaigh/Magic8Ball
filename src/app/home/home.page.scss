@@ -1,0 +1,20 @@
+:host{
+  .ball-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: #f5f5f5;
+    .ball-wrapper{
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: #000;
+      animation: bounce 1s infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

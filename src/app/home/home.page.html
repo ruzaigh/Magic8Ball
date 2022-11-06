@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf="!isWelcomeUser">
+    <ion-item>
+      <ion-label position="stacked">What is your name?</ion-label>
+      <ion-input
+        type="text"
+        [(ngModel)]="username"
+        (keydown)="goToNextPage($event)"
+      ></ion-input>
+    </ion-item>
+  </ng-container>
+
+  <ng-container *ngIf="isWelcomeUser">
+    <ion-item>
+      <ion-label position="stacked"
+        >Welcome {{username}}, do you have asking to ask me?</ion-label
+      >
+      <ion-input
+        type="text"
+        [(ngModel)]="userQuestion"
+        (keydown)="generateRandomQuestion($event)"
+      ></ion-input>
+    </ion-item>
+    <div class="ball-container">
+      <div class="ball-wrapper">
+        <ion-label *ngIf="eightBall">{{eightBall}}</ion-label>
+      </div>
+    </div>
+  </ng-container>
+</ion-content>
