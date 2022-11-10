@@ -10,6 +10,7 @@ export class HomePage implements OnInit {
   @Input() userQuestion;
   public isWelcomeUser = false;
   public eightBall = '';
+  public clickBall: boolean;
   constructor() {
   }
 
@@ -24,9 +25,10 @@ export class HomePage implements OnInit {
   }
 
   generateRandomQuestion(event) {
-    const randomQuestion = Math.floor(Math.random() * 8);
-    this.eightBall = '';
-    if (event.key === 'Enter') {
+    if(event.key === 'Enter') {
+      this.clickBall = true;
+      const randomQuestion = Math.floor(Math.random() * 8);
+      this.eightBall = '';
       switch(randomQuestion){
         case 0:
           this.eightBall = 'It is certain';

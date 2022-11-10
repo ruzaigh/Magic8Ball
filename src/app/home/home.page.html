@@ -27,28 +27,24 @@
         (keydown)="generateRandomQuestion($event)"
       ></ion-input>
     </ion-item>
-<!--    <div class="ball-container">-->
-<!--      <div class="ball-wrapper">-->
-<!--        <ion-label *ngIf="eightBall">-->
-<!--          The Magic Eight Ball's answer is...{{eightBall}}-->
-<!--        </ion-label>-->
-<!--      </div>-->
-<!--    </div>-->
+
+    <div class="ball">
+      <div
+        [ngClass]="(clickBall === true) ? 'window-container' : 'eight-container'"
+      >
+        <div class="wrapper">
+          <div class="eight-number" [hidden]="clickBall === true">8</div>
+          <div class="window" [hidden]="clickBall === false"></div>
+
+          <div
+            [ngClass]="(clickBall === true) ? 'answer show-triangle up' : 'answer'"
+          >
+            {{eightBall}}
+          </div>
+        </div>
+      </div>
+    </div>
+
   </ng-container>
 
- <form class="ball">
-   <div class="window"></div>
-   <div class="eight">
-     <ion-label>
-       8
-     </ion-label>
-   </div>
-   <div class="answers">
-       <input id="negative1" type="radio" name="answer" required>
-       <div class="answer up">Don't<br>count<br>on it</div>
-   </div>
-   <div class="labels">
-     <label for="negative1">Don't count on it</label>
-   </div>
- </form>
 </ion-content>
