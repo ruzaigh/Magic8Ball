@@ -1,111 +1,119 @@
-:host{
-
-  .ball {
-    margin: 0 auto;
-    position: relative;
-    max-width: 320px;
-    max-height: 320px;
-    width: 100%;
-    height: 100%;
-    border-radius: 100%;
+:host {
+  ion-content{
+   &::part(scroll) {
     overflow: hidden;
-    background: radial-gradient(circle at 30vmin 30vmin, #444, #000);
-
-    .eight-container,.window-container {
-
-      height: 100%;
+   }
+    .container {
       width: 100%;
+      height: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
-      .eight-number{
-        max-width: 150px;
-        max-height: 150px;
+      .ball {
+        margin: 0 auto;
+        position: relative;
+        max-width: 320px;
+        max-height: 320px;
         width: 100%;
         height: 100%;
-        font-size: 100px;
-        position: absolute;
-        background: #fff;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: #000;
-      }
-      /* Window to see the answer */
-      .window {
-        height: 150px;
-        width: 150px;
-        border-radius: 50%;
-        background: radial-gradient(#002, #001 18vmin, #666 18vmin, #000 18.5vmin, #000 22vmin, #666 22vmin, #000 22.5vmin);
-      }
-    }
+        border-radius: 100%;
+        overflow: hidden;
+        background: radial-gradient(circle at 30vmin 30vmin, #444, #000);
 
+        .eight-container,
+        .window-container {
+          height: 100%;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .eight-number {
+            max-width: 150px;
+            max-height: 150px;
+            width: 100%;
+            height: 100%;
+            font-size: 100px;
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #000;
+          }
+          /* Window to see the answer */
+          .window {
+            height: 150px;
+            width: 150px;
+            border-radius: 50%;
+            background: radial-gradient(#002, #001 58px, #666, #000 60px, #000, #666, #000)
+          }
+        }
+        .wrapper {
+          .answer {
+            position: absolute;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            left: 120px;
+            top: 120px;
+            width: 76px;
+            height: 100px;
+            color: white;
+            text-align: center;
+            font-family: sans-serif;
+            font-variant: small-caps;
+            font-size: 10px;
+            line-height: 12px;
+            opacity: 0;
+            transition: opacity 1s;
+            animation: floating 6s linear infinite;
+            padding: 0 16px;
+            &.show-triangle {
+              opacity: 1;
+            }
+          }
 
+          /* Triangle */
+          .answer::before {
+            content: "";
+            z-index: -1;
+            position: absolute;
+            left: 0;
+            border-left: 38px solid transparent;
+            border-right: 38px solid transparent;
+            width: 0px;
+            height: 0px;
+          }
 
+          .answer.up::before {
+            top: 0;
+            border-bottom: 70px solid #1c23e8;
+          }
 
-    .wrapper {
-      .answer {
-        position: absolute;
-        justify-content: center;
-        align-items: center;
-        display: flex;
-        left: 120px;
-        top: 120px;
-        width: 76px;
-        height: 100px;
-        color: white;
-        text-align: center;
-        font-family: sans-serif;
-        font-variant: small-caps;
-        font-size: 10px;
-        line-height: 12px;
-        opacity: 0;
-        transition: opacity 1s;
-        animation: floating 6s linear infinite;
-        padding: 0 16px;
-        &.show-triangle{
-          opacity: 1;
+          /* Overlay */
+          .answer::after {
+            content: "";
+            z-index: 1;
+            position: absolute;
+            left: -24px;
+            right: 0px;
+            top: -20px;
+            bottom: 0;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(
+                to left,
+                rgba(0, 0, 0, 0.9),
+                rgba(0, 0, 0, 0)
+            );
+            animation: rotating 6s infinite linear;
+          }
         }
       }
-
-      /* Triangle */
-      .answer::before {
-        content: "";
-        z-index: -1;
-        position: absolute;
-        left: 0;
-        border-left: 38px solid transparent;
-        border-right: 38px solid transparent;
-        width: 0px;
-        height: 0px;
-      }
-
-      .answer.up::before {
-        top: 0;
-        border-bottom: 70px solid #1c23e8;
-      }
-
-
-      /* Overlay */
-      .answer::after {
-        content: "";
-        z-index: 1;
-        position: absolute;
-        left: -24px;
-        right: 0px;
-        top: -20px;
-        bottom: 0;
-        border-radius: 50%;
-        width: 120px;
-        height: 120px;
-        background: linear-gradient(to left, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
-        animation: rotating 6s infinite linear;
-      }
-
     }
   }
-
 
 
   /* Triangle gently floating around */
@@ -114,7 +122,8 @@
       transform: rotateZ(0) rotateY(15deg) translateZ(6.8vmin) rotateZ(0);
     }
     to {
-      transform: rotateZ(1turn) rotateY(15deg) translateZ(6.8vmin) rotateZ(-1turn);
+      transform: rotateZ(1turn) rotateY(15deg) translateZ(6.8vmin)
+        rotateZ(-1turn);
     }
   }
 
@@ -124,7 +133,4 @@
       transform: rotate(1turn);
     }
   }
-
-
-
 }
