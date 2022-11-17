@@ -1,14 +1,11 @@
-import {Component, Input, OnInit} from '@angular/core';
-
+import {Component, OnInit} from '@angular/core';
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  @Input() username;
-  @Input() userQuestion;
-  public isWelcomeUser = false;
+
   public eightBall = '';
   public clickBall: boolean;
   constructor() {
@@ -17,15 +14,7 @@ export class HomePage implements OnInit {
   ngOnInit() {
 
   }
-
-  goToNextPage(event) {
-    if (event.key === 'Enter') {
-      this.isWelcomeUser = true;
-    }
-  }
-
-  generateRandomQuestion(event) {
-    if(event.key === 'Enter') {
+  generateRandomQuestion() {
       this.clickBall = true;
       const randomQuestion = Math.floor(Math.random() * 8);
       this.eightBall = '';
@@ -59,5 +48,4 @@ export class HomePage implements OnInit {
           break;
       }
     }
-  }
 }

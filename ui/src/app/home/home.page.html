@@ -1,0 +1,37 @@
+
+
+
+<app-menu></app-menu>
+
+
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Magic 8 Ball</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <div class="container" (click)="generateRandomQuestion()">
+      <ion-label>What is it That you Seek?</ion-label>
+      <div class="ball">
+        <div
+          [ngClass]="(clickBall === true) ? 'window-container' : 'eight-container'"
+        >
+          <div class="wrapper">
+            <div class="eight-number" [hidden]="clickBall === true">8</div>
+            <div class="window" [hidden]="clickBall === false"></div>
+
+            <div
+              [ngClass]="(clickBall === true) ? 'answer show-triangle up' : 'answer'"
+            >
+              {{eightBall}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</div>

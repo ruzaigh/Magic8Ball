@@ -9,6 +9,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
+      ion-label{
+        padding-bottom: 32px;
+        font-size: 22px;
+        font-weight: 500;
+      }
       .ball {
         margin: 0 auto;
         position: relative;

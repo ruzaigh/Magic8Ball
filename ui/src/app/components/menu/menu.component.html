@@ -1,0 +1,17 @@
+<ion-menu contentId="main-content">
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-item button routerLink="custom-message">Create Custom Message</ion-item>
+    <ion-item button routerLink="custom-ball">Customise Ball</ion-item>
+    <ng-container *ngIf="auth.user$ | async as user; else login">
+      <ion-item button (click)="auth.signOut()">Sign Out</ion-item>
+    </ng-container>
+    <ng-template #login>
+      <ion-item button (click)="auth.googleSignin()">Login with Google</ion-item>
+    </ng-template>
+  </ion-content>
+</ion-menu>
